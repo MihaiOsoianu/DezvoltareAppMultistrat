@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DAM</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-800">
+
+<section th:replace="general.html :: navbar"></section>
+
+<div class="mx-auto mt-44 p-4 rounded w-4/12 bg-gray-900">
+
+    <h1 class="text-center text-2xl text-white mb-4">Actualizeaza Test</h1>
+
+
+    <div class="mx-auto w-1/2">
+        <form action="#" th:action="@{/teste/save}" th:object = "${test}" th:method="PUT">
+
+            <input type="hidden" th:field="*{idTest}">
+            <input type="hidden" th:field="*{nrIntrebari}">
+            <input type="hidden" th:field="*{punctajMinimNecesar}">
+            <input type="hidden" th:field="*{punctajMaxim}">
+
+            <input type="text" th:field = "*{nume}"
+                   placeholder="Nume" class="mb-4 bg-gray-800 text-white rounded block">
+
+            <input type="text" th:field = "*{subiect}"
+                   placeholder="Subiect" class="mb-4 bg-gray-800 text-white rounded block">
+
+            <!--        de adaugat o descriere??-->
+            <!--        <span th:errors="*{name}"></span>-->
+            <button type="submit" class="text-white bg-blue-500 rounded px-2 py-2 hover:bg-blue-700 text-center">Salveaza Testul</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

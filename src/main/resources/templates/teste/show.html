@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DAM</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-800">
+
+<section th:replace="general.html :: navbar"></section>
+
+<div class="w-6/12 mt-4 mx-auto text-white">
+    <h1 class="text-center"><span th:text="${test.nume}" class="text-2xl font-semibold"></span> (<span th:text="${test.subiect}"></span>)</h1>
+    <div>
+<!--        <p>Subiect <span th:text="${test.subiect}"></span></p>-->
+        <h4 class="text-xl my-4">Intrebarile din Test</h4>
+        <div th:each="intrebare : ${listaIntrebari}" class="mb-2 flex">
+            <p  th:text="${intrebare.getIntrebare().getContinut()}" class="mr-2"></p><span class="mr-2"> -</span>
+            <p th:text="${intrebare.getPunctaj()}" class="mr-2"></p><span class="mr-2"> puncte</span>
+            <a th:href="@{/teste/intrebari/delete/{id}(id=${intrebare.idTestIntrebare})}" class="text-white text-xs bg-red-500 rounded px-1 py-1 hover:bg-red-700 block text-center">Remove</a>
+        </div>
+        <p th:unless="${listaIntrebari.size()}">Inca nu au fost adaugate intrebari.</p>
+        <a th:href="@{/teste/intrebari/{id}(id=${test.idTest})}" class="mr-4 text-white text-xs bg-blue-500 rounded px-1 py-1 hover:bg-blue-700 text-center">Adauga Intrebari</a>
+    </div>
+</div>
+</body>
+</html>

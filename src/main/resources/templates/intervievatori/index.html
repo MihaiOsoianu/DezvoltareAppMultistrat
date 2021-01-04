@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DAM</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-800">
+
+    <section th:replace="general.html :: navbar"></section>
+
+    <div class="w-8/12 mt-4 mx-auto">
+        <h1 class="text-2xl text-white font-semibold text-center block mb-2">Intervievatori Disponibili</h1>
+        <a
+                th:href="@{/intervievatori/create}"
+                class="font-semibold text-white bg-blue-500 rounded-lg px-2 py-2 hover:bg-blue-700 text-center mb-3"
+        >Adauga Intervievator</a>
+        <table class="mx-auto border-1 border-gray-500 table-auto text-white mt-6">
+            <thead class="bg-gray-900">
+            <tr>
+                <th>Nume</th>
+                <th>Prenume</th>
+                <th>Specializare</th>
+                <th>Creat la</th>
+                <th>Actualizat la</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="intervievator : ${listIntervievatori}">
+                <td th:text="${intervievator.nume}" class="pr-4"></td>
+                <td th:text="${intervievator.prenume}" class="px-4"></td>
+                <td th:text="${intervievator.specializare}" class="px-4"></td>
+                <td th:text="${intervievator.createdAt}" class="px-4"></td>
+                <td th:text="${intervievator.updatedAt}" class="px-4"></td>
+                <td class="pl-4">
+                    <div class="flex">
+                        <a
+                                th:href="@{/intervievatori/edit/{id}(id=${intervievator.idPersoana})}"
+                                class="mr-4 text-white text-xs bg-blue-500 rounded px-1 py-1 hover:bg-blue-700 block text-center"
+                        >Update</a>
+                        <a
+                                th:href="@{/intervievatori/delete/{id}(id=${intervievator.idPersoana})}"
+                                class="text-white text-xs bg-red-500 rounded px-1 py-1 hover:bg-red-700 block text-center"
+                        >Delete</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

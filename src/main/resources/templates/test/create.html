@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DAM</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-800">
+
+<section th:replace="general.html :: navbar"></section>
+
+<div class="w-4/12 mt-4 mx-auto text-white p-4 bg-gray-900">
+
+<h1 class="text-center text-2xl text-white mb-4">Test</h1>
+    <form th:action="@{/rezultat}" method="POST">
+        <input type="hidden" th:field="${test.idTest}">
+        <input type="hidden" th:field="${interviu.idInterviu}">
+        <ol type="1">
+            <li th:each="intrebare : ${listaIntrebari}" class="mb-4">
+                <h5 th:text="${intrebare.getIntrebare.continut}"></h5>
+                <input type="hidden" th:name="intrebareId" th:value="${intrebare.getIntrebare.idIntrebare}">
+                <ol type="A" class="pl-4">
+
+                    <li class="mb-1">
+                        <input type="radio" th:name="${intrebare.getIntrebare.idIntrebare}" th:value="A">
+                        <span th:text="${intrebare.getIntrebare.A}"></span>
+                    </li>
+
+                    <li class="mb-1">
+                        <input type="radio" th:name="${intrebare.getIntrebare.idIntrebare}" th:value="B">
+                        <span th:text="${intrebare.getIntrebare.B}"></span>
+                    </li>
+
+                    <li class="mb-1">
+                        <input type="radio" th:name="${intrebare.getIntrebare.idIntrebare}" th:value="C">
+                        <span th:text="${intrebare.getIntrebare.C}"></span>
+                    </li>
+                    <li class="mb-1">
+                        <input type="radio" th:name="${intrebare.getIntrebare.idIntrebare}" th:value="D">
+                        <span th:text="${intrebare.getIntrebare.D}"></span>
+                    </li>
+                </ol>
+
+            </li>
+        </ol>
+        <input type="submit" value="Submit" class="text-white bg-blue-500 rounded px-2 py-2 hover:bg-blue-700 text-center">
+    </form>
+</div>
+</body>
+</html>

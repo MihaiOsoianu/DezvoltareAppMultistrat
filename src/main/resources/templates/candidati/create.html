@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DAM</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-800">
+
+    <section th:replace="general.html :: navbar"></section>
+
+    <div class="mx-auto mt-44 p-4 rounded w-4/12 bg-gray-900">
+        <h1 class="text-center text-2xl text-white mb-4">Candidat Nou</h1>
+        <div class="mx-auto w-1/2">
+            <form action="#" th:action="@{/candidati/save}" th:object = "${candidat}" method="POST">
+
+                <input type="text" th:field = "*{nume}"
+                       placeholder="Nume" class="mb-4 bg-gray-800 text-white rounded block">
+
+                <input type="text" th:field = "*{prenume}"
+                       placeholder="Prenume" class="mb-4 bg-gray-800 text-white rounded block">
+
+                <input type="text" th:field = "*{telefon}"
+                       placeholder="Telefon" class="mb-4 bg-gray-800 text-white rounded block">
+
+                <input type="text" th:field = "*{email}"
+                       placeholder="Email" class="mb-4 bg-gray-800 text-white rounded block">
+
+                <button type="submit" class="text-white bg-blue-500 rounded px-2 py-2 hover:bg-blue-700 text-center">Salveaza Candidatul</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

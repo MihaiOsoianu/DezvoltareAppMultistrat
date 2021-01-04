@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DAM</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-800">
+
+    <section th:replace="general.html :: navbar"></section>
+
+    <div class="w-6/12 mt-4 mx-auto bg-gray-900 text-white p-4 rounded">
+        <h1 class="text-2xl font-semibold text-center mb-2"> Adauga intrebari pentru testul "<span th:text="${test.nume}"></span>"</h1>
+        <div class="bg-gray-800 rounded ml-10 p-4 mb-4" th:each="intrebare : ${listaIntrebari}">
+        <form method="POST" th:object="${form}" th:action="@{/teste/intrebari/save}">
+                    <input type="hidden" name="idTest" id="idTest" th:value="${test.idTest}">
+                    <input type="hidden" name="idIntrebare" id="idIntrebare" th:value="${intrebare.idIntrebare}">
+                    <p class="mb-2" th:text="${intrebare.continut}"></p>
+                    <label class="block mb-2" for="punctaj">Punctaj: </label>
+                    <input type="number" name="punctaj" id="punctaj" placeholder="1.0" min="0.1" max="10" step="0.1" required class="mb-4 bg-gray-900 text-white rounded block">
+            <button type="submit" class="mb-2 text-white text-xs bg-blue-500 rounded px-1 py-1 hover:bg-blue-700 block text-center">Adauga</button>
+        </form>
+        </div>
+    </div>
+</body>
+</html>

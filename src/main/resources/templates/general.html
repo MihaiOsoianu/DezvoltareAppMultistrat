@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DAM</title>
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<body>
+<section th:fragment="navbar" class="py-3 bg-gray-900 ">
+
+    <div class="w-8/12 flex items-center mx-auto justify-between">
+
+        <div>
+            <a href="/candidati" class="no-underline text-gray-300 hover:text-white hover:bg-gray-900 rounded-lg px-6 py-3 inline-block mx-2">Candidati</a>
+        </div>
+
+        <div>
+            <a href="/intervievatori" class="no-underline text-gray-300 hover:text-white hover:bg-gray-900 rounded-lg px-6 py-3 inline-block mx-2">Intervievatori</a>
+        </div>
+
+        <div>
+            <a href="/teste" class="no-underline text-gray-300 hover:text-white hover:bg-gray-900 rounded-lg px-6 py-3 inline-block mx-2">Teste</a>
+        </div>
+
+        <div>
+            <a href="/intrebari" class="no-underline text-gray-300 hover:text-white hover:bg-gray-900 rounded-lg px-6 py-3 inline-block mx-2">Intrebari</a>
+        </div>
+
+        <div>
+            <a href="/interviuri" class="no-underline text-gray-300 hover:text-white hover:bg-gray-900 rounded-lg px-6 py-3 inline-block mx-2">Interviuri</a>
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

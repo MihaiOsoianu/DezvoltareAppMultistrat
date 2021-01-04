@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DAM</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-800">
+
+<section th:replace="general.html :: navbar"></section>
+
+<div class="w-4/12 mt-56 mx-auto text-white p-4 bg-gray-900">
+
+    <h1 class="text-center text-2xl text-white mb-4">Rezultat</h1>
+
+    <p>Ati obtinut <span th:text="${rezultat.punctaj}"></span> puncte din <span th:text="${test.punctajMaxim}"></span></p>
+    <p th:if="${rezultat.punctaj} > ${test.punctajMinimNecesar}" class="text-green-500">Sustinut</p>
+    <p th:unless="${rezultat.punctaj} > ${test.punctajMinimNecesar}" class="text-red-500">Picat</p>
+
+</div>
+</body>
+</html>

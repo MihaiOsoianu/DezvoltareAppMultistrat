@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DAM</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-800">
+
+    <section th:replace="general.html :: navbar"></section>
+    <div class="mx-auto mt-52 p-4 rounded w-4/12 bg-gray-900 text-white">
+        <h1 class="text-center text-2xl text-white mb-4">Interviul din data de <span th:text="${interviu.data}"></span></h1>
+        <p>Candidatul - <span th:text="${interviu.getCandidat().getTotNume()}"></span></p>
+        <p>Intervievatorul - <span th:text="${interviu.getIntervievator().getTotNume()}"></span></p>
+        <div th:if="${interviu.rezultat != null}">
+            <p th:if="${interviu.rezultat.punctaj} > ${interviu.test.punctajMinimNecesar}" class="text-green-500">Sustinut</p>
+            <p th:unless="${interviu.rezultat.punctaj} > ${interviu.test.punctajMinimNecesar}" class="text-red-500">Picat</p>
+        </div>
+        <div th:unless="${interviu.rezultat != null}">
+            <p th:unless="${poateSustineTestul}">Candidatul urmeaza sa sustina testul "<span th:text="${interviu.test.getNume()}"></span>"</p>
+            <div th:if="${poateSustineTestul}"><a th:href="@{/interviu/{idInterviu}/test/{idTest}(idTest=${interviu.test.getIdTest()}, idInterviu=${interviu.idInterviu})}">Sustine Testul</a></div>
+        </div>
+        <div></div>
+    </div>
+</body>
+</html>
